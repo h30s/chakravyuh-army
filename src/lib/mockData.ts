@@ -1,6 +1,4 @@
-
 import { Node, Alert, NetworkConnection, AlertType } from "./types";
-
 // Mock node data (limited to just 3 nodes)
 export const mockNodes: Node[] = [
   {
@@ -22,22 +20,21 @@ export const mockNodes: Node[] = [
     battery: 72,
     signalStrength: 88,
     lastActivity: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-    location: { lat: 21, lng: 79},
+    location: { lat: 21.155, lng: 79.091 },
     type: "advanced"
   },
   {
     id: "node3",
     name: "Node #03",
     sector: "Sector C",
-    status: "offline",
+    status: "online",
     battery: 95,
     signalStrength: 90,
     lastActivity: new Date(Date.now() - 1 * 60 * 1000), // 1 minute ago
-    location: { lat: 21, lng: 79.095 },
+    location: { lat: 21.148, lng: 79.095 },
     type: "standard"
   }
 ];
-
 // Alert descriptions by type
 const alertDescriptions: Record<AlertType, string[]> = {
   gun: ["Gun Reload Detected", "Gunshot Detected", "Multiple Gunshots Detected"],
@@ -48,7 +45,6 @@ const alertDescriptions: Record<AlertType, string[]> = {
   drone: ["Drone Detected", "UAV Activity", "Aerial Vehicle Detected"],
   help: ["Help Call Detected", "Distress Signal", "Emergency Request"]
 };
-
 // Alert severities by type
 const alertSeverities: Record<AlertType, "critical" | "warning" | "info"> = {
   gun: "critical",
@@ -59,7 +55,6 @@ const alertSeverities: Record<AlertType, "critical" | "warning" | "info"> = {
   drone: "warning",
   help: "critical"
 };
-
 // Generate mock alerts (limited to our 3 nodes)
 export const mockAlerts: Alert[] = [
   // Recent alerts for node1
@@ -93,21 +88,19 @@ export const mockAlerts: Alert[] = [
     acknowledged: false
   }
 ];
-
 // Mock network connections between the 3 nodes
 export const mockConnections: NetworkConnection[] = [
   { source: "node1", target: "node2", strength: 88 },
   { source: "node2", target: "node3", strength: 92 },
-  { source: "node1", target: "node3", strength: 90 },
+  { source: "node1", target: "node3", strength: 82 }
 ];
 
 // Mock network status
 export const mockNetworkStatus = {
-  activeNodes: 2,
+  activeNodes: 3,
   totalNodes: 3,
   networkHealth: 95
 };
-
 // Function to generate a new mock alert
 export function generateMockAlert(): Alert {
   const alertTypeKeys = Object.keys(alertDescriptions) as AlertType[];
@@ -129,7 +122,6 @@ export function generateMockAlert(): Alert {
     acknowledged: false
   };
 }
-
 // Function to generate a new node
 export function generateNewNode(name: string, sector: string, location: { lat: number; lng: number }): Node {
   return {
