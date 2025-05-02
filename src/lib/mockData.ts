@@ -22,18 +22,18 @@ export const mockNodes: Node[] = [
     battery: 72,
     signalStrength: 88,
     lastActivity: new Date(Date.now() - 5 * 60 * 1000), // 5 minutes ago
-    location: { lat: 21.155, lng: 79.091 },
+    location: { lat: 21, lng: 79},
     type: "advanced"
   },
   {
     id: "node3",
     name: "Node #03",
     sector: "Sector C",
-    status: "online",
+    status: "offline",
     battery: 95,
     signalStrength: 90,
     lastActivity: new Date(Date.now() - 1 * 60 * 1000), // 1 minute ago
-    location: { lat: 21.148, lng: 79.095 },
+    location: { lat: 21, lng: 79.095 },
     type: "standard"
   }
 ];
@@ -98,12 +98,12 @@ export const mockAlerts: Alert[] = [
 export const mockConnections: NetworkConnection[] = [
   { source: "node1", target: "node2", strength: 88 },
   { source: "node2", target: "node3", strength: 92 },
-  { source: "node1", target: "node3", strength: 82 }
+  { source: "node1", target: "node3", strength: 90 },
 ];
 
 // Mock network status
 export const mockNetworkStatus = {
-  activeNodes: 3,
+  activeNodes: 2,
   totalNodes: 3,
   networkHealth: 95
 };
